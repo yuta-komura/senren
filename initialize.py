@@ -18,6 +18,8 @@ def config_test():
 
 
 def truncate_table():
+    sql = "truncate backtest_entry"
+    repository.execute(database=DATABASE, sql=sql)
     sql = "truncate entry"
     repository.execute(database=DATABASE, sql=sql)
 
