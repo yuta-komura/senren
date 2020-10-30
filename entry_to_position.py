@@ -43,14 +43,5 @@ while True:
                 latest_side = side
 
         else:  # side is BUY or SELL
-            order_side, order_size = bitflyer.order(side=side)
-
-            if order_side:
-                message.info("position validation")
-
-                bitflyer.position_validation(order_side=order_side,
-                                             order_size=order_size)
-
-                message.info("valid position")
-
+            bitflyer.order(side=side)
             latest_side = side
