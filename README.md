@@ -10,7 +10,7 @@ bitflyer-lightning（btcfxjpy）用のビットコイン自動売買botです。
 
 ---  
 ### 環境  
-ubuntu20.04 / mysql / python
+ubuntu20.04 / mysql / python3.8.3
 
 ---  
 ### インストール  
@@ -28,7 +28,10 @@ class DATABASE(Enum):
 ```
 
 **pythonライブラリ**：  
-venv同梱です。プログラム起動時に自動でvenvがアクティベートされます。  
+同梱のrequirements.txtを利用して、インストールを行ってください。
+```bash
+pip install -r requirements.txt
+```
 
 **bitflyer apikey**：  
 1．bitflyer-lightningのサイドバーから"API"を選択  
