@@ -8,7 +8,7 @@ from lib import repository
 
 
 def save_entry(date, side, price, size=0, basis_price=None):
-    sql = "insert into backtest_entry values ('{date}','{side}',{price},{size})"\
+    sql = "insert into backtest_entry values ('{date}','{side}',{price},'{size}')"\
         .format(date=date, side=side, price=price, size=size)
     repository.execute(database=database, sql=sql, write=False)
     return {
