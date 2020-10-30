@@ -3,9 +3,7 @@ import time
 import traceback
 
 from lib import bitflyer, message, repository
-from lib.config import Anomaly, Bitflyer
-
-ENTRY_MINUTE = Anomaly.ENTRY_MINUTE.value
+from lib.config import Bitflyer
 
 bitflyer = bitflyer.API(api_key=Bitflyer.Api.value.KEY.value,
                         api_secret=Bitflyer.Api.value.SECRET.value)
@@ -34,13 +32,6 @@ while True:
             after_sleep_date = date + datetime.timedelta(seconds=180)
             now_to_sleep_list = \
                 list(range(date.minute, after_sleep_date.minute + 1))
-
-            reaches_entry_minute = ENTRY_MINUTE in now_to_sleep_list
-
-            if reaches_entry_minute:
-                message.warning("sleep reaches entry minute")
-                latest_side = side
-                continue
 
             time.sleep(120)
 
