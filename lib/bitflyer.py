@@ -140,11 +140,11 @@ class API:
             entry = \
                 repository.read_sql(database=self.DATABASE, sql=sql)
             if entry.empty:
-                message.warning("entry empty")
+                message.info("entry empty")
                 return True
             latest_side = entry.at[0, "side"]
             if latest_side != side:
-                message.warning("change side from", side, "to", latest_side)
+                message.info("change side from", side, "to", latest_side)
                 return True
             else:
                 return False
