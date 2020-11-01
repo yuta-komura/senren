@@ -24,7 +24,7 @@ is_first = True
 while True:
     side = get_side()
 
-    if side == "SELL" and not has_buy:
+    if side == "BUY" and not has_buy:
         if is_first:
             is_first = False
         else:
@@ -32,7 +32,7 @@ while True:
         has_buy = True
         has_sell = False
 
-    if side == "BUY" and not has_sell:
+    if side == "SELL" and not has_sell:
         if is_first:
             is_first = False
         else:
