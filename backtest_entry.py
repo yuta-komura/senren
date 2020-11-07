@@ -8,9 +8,9 @@ from lib import repository
 
 
 def save_entry(date, side, price, size=0, basis_price=None):
-    sql = "insert into backtest_entry values ('{date}','{side}',{price},'{size}')"\
-        .format(date=date, side=side, price=price, size=size)
-    repository.execute(database=database, sql=sql, write=False)
+    sql = "update backtest_entry set side='{side}', size='{size}'"\
+        .format(side=side, size=size)
+    repository.execute(database=DATABASE, sql=sql, write=False)
     return {
         "date": date,
         "side": side,
@@ -21,7 +21,7 @@ def save_entry(date, side, price, size=0, basis_price=None):
 
 def get_order_data(side):
     sql = "select * from ticker"
-    ticker = repository.read_sql(database=database, sql=sql).iloc[0]
+    ticker = repository.read_sql(database=DATABASE, sql=sql).iloc[0]
     if side == "BUY":
         order_price = ticker["best_bid"]  # 1361825
     else:  # SELL
@@ -30,7 +30,7 @@ def get_order_data(side):
     return order_date, order_price
 
 
-database = "tradingbot"
+DATABASE = "tradingbot"
 pd.set_option('display.max_columns', 100000)
 pd.set_option('display.max_rows', 100000)
 
@@ -71,7 +71,7 @@ while True:
                         and date > '{date}'
                         and price >= '{price}'
                     """.format(date=date, price=price)
-            eh = repository.read_sql(database=database, sql=sql)
+            eh = repository.read_sql(database=DATABASE, sql=sql)
             if eh.empty:
                 pass
             else:
@@ -110,7 +110,7 @@ while True:
                         and date > '{date}'
                         and price <= '{price}'
                     """.format(date=date, price=price)
-            eh = repository.read_sql(database=database, sql=sql)
+            eh = repository.read_sql(database=DATABASE, sql=sql)
             if eh.empty:
                 pass
             else:
@@ -140,7 +140,7 @@ while True:
                     and date > '{date}'
                     and price <= '{price}'
                 """.format(date=date, price=limits[0])
-        eh = repository.read_sql(database=database, sql=sql)
+        eh = repository.read_sql(database=DATABASE, sql=sql)
         if eh.empty:
             time.sleep(60)
         else:
@@ -175,7 +175,7 @@ while True:
                     and date > '{date}'
                     and price >= '{price}'
                 """.format(date=date, price=limits[0])
-        eh = repository.read_sql(database=database, sql=sql)
+        eh = repository.read_sql(database=DATABASE, sql=sql)
         if eh.empty:
             time.sleep(60)
         else:

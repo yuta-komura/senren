@@ -20,12 +20,17 @@ def config_test():
 def truncate_table():
     sql = "truncate backtest_entry"
     repository.execute(database=DATABASE, sql=sql)
+    sql = "truncate backtest_entry_analysis"
+    repository.execute(database=DATABASE, sql=sql)
     sql = "truncate entry"
     repository.execute(database=DATABASE, sql=sql)
 
 
 def insert_data():
     message.info("initial entry")
+
+    sql = "insert into backtest_entry values('CLOSE',0)"
+    repository.execute(database=DATABASE, sql=sql, write=False)
     sql = "insert into entry values('CLOSE')"
     repository.execute(database=DATABASE, sql=sql, write=False)
 

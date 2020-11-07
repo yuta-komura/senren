@@ -3,10 +3,14 @@ CREATE DATABASE tradingbot;
 
 -- テーブル
 CREATE TABLE `backtest_entry` (
-    `date` datetime(6) NOT NULL,
     `side` varchar(255) NOT NULL,
-    `price` int unsigned NOT NULL,
     `size` decimal(65, 30) unsigned NOT NULL
+);
+
+CREATE TABLE `backtest_entry_analysis` (
+    `date` timestamp NOT NULL,
+    `side` varchar(255) NOT NULL,
+    `price` int unsigned NOT NULL
 );
 
 CREATE TABLE `entry` (`side` varchar(255) NOT NULL);
