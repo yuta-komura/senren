@@ -1,5 +1,3 @@
-import datetime
-import time
 import traceback
 
 from lib import bitflyer, message, repository
@@ -23,25 +21,10 @@ while True:
 
     if latest_side is None \
             or latest_side != side:
+
         if side == "CLOSE":
             bitflyer.close()
-
-            message.info("close validation")
-
-            date = datetime.datetime.now()
-            after_sleep_date = date + datetime.timedelta(seconds=180)
-            now_to_sleep_list = \
-                list(range(date.minute, after_sleep_date.minute + 1))
-
-            time.sleep(120)
-
-            has_position = bitflyer.close()
-            if has_position:
-                time.sleep(1)
-            else:
-                message.info("valid close")
-                latest_side = side
-
         else:  # side is BUY or SELL
             bitflyer.order(side=side)
-            latest_side = side
+
+        latest_side = side
