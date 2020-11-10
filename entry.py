@@ -25,7 +25,7 @@ def get_side():
                 date
             """
     be = repository.read_sql(database=DATABASE, sql=sql)
-    if be.empty:
+    if len(be) <= 1:
         return None
 
     profits = []
