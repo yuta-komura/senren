@@ -81,4 +81,4 @@ sh senren/main/execute.sh
 ```
 ---  
 ### main process  
-<a href="https://imgur.com/FZKL1cX"><img src="https://i.imgur.com/FZKL1cX.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/4Udg7t9"><img src="https://i.imgur.com/4Udg7t9.png" title="source: imgur.com" /></a>
